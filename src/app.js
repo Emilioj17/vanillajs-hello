@@ -12,11 +12,12 @@ window.onload = function() {
 
 window.onload = () => {
   document.querySelector("#boton").addEventListener("click", () => {
-    document.querySelector("#generator").innerHTML = generatedomain();
+    document.querySelector("#aqui").innerHTML = generatedomain();
   });
 };
 
 let generatedomain = () => {
+  let listaDominios = [];
   let pronoun = ["tu", "mi", "su"];
   let subject = [
     "magico",
@@ -34,5 +35,17 @@ let generatedomain = () => {
   let nounIndx = Math.floor(Math.random() * noun.length);
   let extensionsIndx = Math.floor(Math.random() * extension.length);
 
-  return `www.${pronoun[proIndx]}${subject[subjectIndx]}${noun[nounIndx]}${extension[extensionsIndx]}`;
+  for (let p in pronoun) {
+    for (let s in subject) {
+      for (let n in noun) {
+        for (let es in extension) {
+          listaDominios.push(
+            `<br> www.${pronoun[p]}${subject[s]}${noun[n]}${extension[es]}`
+          );
+        }
+      }
+    }
+  }
+
+  return listaDominios;
 };
